@@ -1,0 +1,215 @@
+package com.jsp.hirarchical;
+import java.util.Scanner;
+public class Flipcart {
+	public void order() {
+		System.out.println("login details:");
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter email:");
+		String email=s.next();
+		System.out.println("enter passward");
+		String passward=s.next();
+		System.out.println("search the products");
+	}
+}
+	class Fashion extends Flipcart{
+		public void men() {
+			Scanner s=new Scanner(System.in);
+			System.out.println("enter the types of cloths:");
+			String types=s.next();
+			System.out.println("enter the size:");
+			String size=s.next();
+		}
+		public void women() {
+			Scanner s=new Scanner(System.in);
+			System.out.println("enter the types of cloths:");
+			String types=s.next();
+			System.out.println("enter the size:");
+			String size=s.next();
+		}
+	}
+	class Brand extends Fashion{
+		public void puma() {
+			Scanner s=new Scanner(System.in);
+			System.out.println("select the collor from puma brand:");
+			String color=s.next();
+		}
+		public void nike() {
+			Scanner s=new Scanner(System.in);
+			System.out.println("select the collor from nike brand:");
+			String color=s.next();
+		}
+	}
+	class Electronics extends Flipcart{
+		public void mobile() {
+			System.out.println("select the brand:");
+		}
+		public void laptops() {
+			System.out.println("select the brands:");
+		}
+	}
+	class Brand1 extends Electronics{
+		public void samsung() {
+			System.out.println("select the phone with specification:");
+			System.out.println("buy now");
+		}
+		public void dell() {
+			System.out.println("select the laptop with specification:");
+			System.out.println("buy now");
+		}
+	}
+	class Grocery extends Flipcart{
+		public void dailyuse() {
+			Scanner s=new Scanner(System.in);
+			System.out.println("search the daily items:");
+			String daily=s.next();
+			System.out.println("buy now");
+		}
+		public void vegandgrains() {
+			Scanner s=new Scanner(System.in);
+			System.out.println("select the vegetables and garins:");
+			String vegies=s.next();
+			System.out.println("buy now");
+		}
+	}
+	class Buy{
+		public void Cashondelivery() {
+			System.out.println("cash on ddelivery");
+		}
+		public void onlinepay() {
+			Scanner s=new Scanner(System.in);
+			System.out.println("entert he mode of online pay:");
+			String mode=s.next();
+			System.out.println("enter the datails:");
+			String dtails=s.next();
+			System.out.println("enter the address:");
+			String adderss=s.next();
+			System.out.println("order placed, thank you");
+			
+		}
+	}
+  
+  // Main method.........................................................................
+  
+  package com.jsp.hirarchical;
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Flipcart f=new Flipcart();
+		f.order();
+		System.out.println("select the item from (fashion) or (electronics) or (groceries)");
+		Scanner s=new Scanner(System.in);
+		Brand b=new Brand();
+		Buy m=new Buy();
+		String item=s.next();
+		switch(item) {
+		case "fashion":
+			System.out.println("select the gender:");
+			String gender=s.next();
+			if(gender.equals("men")||gender.equals("male")) {
+				b.men();
+				System.out.println("select the brand:");
+				String brand1=s.next();
+				if(brand1.equals("puma")) {
+					b.puma();
+					System.out.println("select the mode of buy:");
+					String mode=s.next();
+					if(mode.equals("cod")) {
+						m.Cashondelivery();
+					}else {
+						m.onlinepay();
+					}
+				}else if(brand1.equals("nike")){
+					b.nike();
+					System.out.println("select the mode of buy:");
+					String mode=s.next();
+					if(mode.equals("cod")) {
+						m.Cashondelivery();
+					}else {
+						m.onlinepay();
+
+				}
+			}else if(gender.equals("women")||gender.equals("female")) {
+				b.women();
+				System.out.println("select the brand:");
+				String brand2=s.next();
+				if(brand2.equals("puma")) {
+					b.puma();
+					System.out.println("select the mode of buy:");
+					String mode=s.next();
+					if(mode.equals("cod")) {
+						m.Cashondelivery();
+					}else if(mode.equals("online")){
+						m.onlinepay();
+					}
+				}else if(brand2.equals("nike")){
+					b.nike();
+					System.out.println("select the mode of buy:");
+					String mode=s.next();
+					if(mode.equals("cod")) {
+						m.Cashondelivery();
+					}else if(mode.equals("online")){
+						m.onlinepay();
+					}
+				}
+			}
+			}
+			break;
+		case "electronics":
+			Brand1 b3=new Brand1();
+			System.out.println("search the gadgets:");
+			String gadgets=s.next();
+			if(gadgets.equals("phone")) {
+				b3.mobile();
+				b3.samsung();
+				System.out.println("select the mode of buy:");
+				String mode=s.next();
+				if(mode.equals("cod")) {
+					m.Cashondelivery();
+				}else if(mode.equals("online")){
+					m.onlinepay();
+				}
+			}else if(gadgets.equals("laptops")) {
+				b3.laptops();
+				b3.dell();
+				System.out.println("select the mode of buy:");
+				String mode=s.next();
+				if(mode.equals("cod")) {
+					m.Cashondelivery();
+				}else if(mode.equals("online")){
+					m.onlinepay();
+				}
+			}
+			break;
+		case "grocery":
+			Grocery g=new Grocery();
+			System.out.println("select the types of items:");
+			String items=s.next();
+			if(items.equals("daily")) {
+				g.dailyuse();
+				System.out.println("select the mode of buy:");
+				String mode=s.next();
+				if(mode.equals("cod")) {
+					m.Cashondelivery();
+				}else if(mode.equals("online")){
+					m.onlinepay();
+				}
+			}else if(items.endsWith("vegies")){
+				g.vegandgrains();
+				System.out.println("select the mode of buy:");
+				String mode=s.next();
+				if(mode.equals("cod")) {
+					m.Cashondelivery();
+				}else if(mode.equals("online")){
+					m.onlinepay();
+				}
+			}
+			}
+		}
+	}
+
+
+
+
+
